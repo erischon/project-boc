@@ -53,13 +53,13 @@ export default function Auth() {
   return (
     <div className="relative h-full w-full bg-no-repeat bg-center bg-fixed bg-cover">
       <div className="bg-white w-full h-full lg:bg-opacity-50">
-        <nav className="px-12 py-4 flex items-end gap-1 bg-slate-300">
+        <nav className="px-12 py-4 flex items-end gap-1">
           <img src="/images/logo.png" alt="logo" className="h-8" />
           <span className="text-xl font-semibold">OC</span>
         </nav>
 
-        <div className="flex justify-center">
-          <div className="bg-[var(--color-primary)] bg-opacity-30 px-16 py-10 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full">
+        <div className="flex justify-center mx-4">
+          <div className="bg-[var(--color-primary)] bg-opacity-30 px-16 py-10 self-center mt-2 lg:w-2/5 lg:max-w-md rounded-md w-full shadow-md">
             <h2 className="text-white text-4xl mb-8 font-semibold">
               {variant === "login" ? "Se connecter" : "S'enregistrer"}
             </h2>
@@ -100,7 +100,7 @@ export default function Auth() {
 
             <button
               onClick={variant === "login" ? login : register}
-              className="bg-red-600 py-3 text-white rounded-md w-full mt-10 hover:bg-red-700 transition"
+              className="bg-orange-500 py-3 text-white rounded-md w-full mt-10 hover:bg-orange-600 transition"
             >
               {variant === "login" ? "Vous connecter" : "Vous enregistrer"}
             </button>
