@@ -1,10 +1,12 @@
+import AuthForm from "./components/auth/AuthForm";
+
 /**
  * @description Home Page
  */
 export default function Home() {
   return (
     <main>
-      <h1>Projet BOC</h1>
+      <AuthForm />
     </main>
   );
 }
