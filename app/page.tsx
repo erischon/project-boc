@@ -5,7 +5,7 @@ import RegisterForm from "./components/forms/RegisterForm";
  */
 export default function Home() {
   return (
-    <main className="flex justify-center items-center h-screen w-full bg-neutral-100">
+    <main className="flex justify-center items-center h-screen w-full">
       <RegisterForm />
     </main>
   );
