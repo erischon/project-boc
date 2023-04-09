@@ -16,7 +16,7 @@ interface FormProps {
 }
 
 /**
- * @description
+ * @description Form component.
  */
 const Form: React.FC<FormProps> = ({
   title,
