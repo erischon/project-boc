@@ -46,8 +46,8 @@ const Form: React.FC<FormProps> = ({
 
   return (
     <>
-      <div className="flex justify-center items-center outline-none focus:outline-none w-full">
-        <form className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-2 h-full md:h-auto lg:h-auto ">
+      <div className="flex flex-col justify-center items-center outline-none focus:outline-none w-full">
+        <form className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-4 h-full md:h-auto lg:h-auto">
           {/* == Form Content == */}
           <div className="">
             <div className="relative flex flex-col h-full md:h-auto lg:h-auto border-0 rounded-lg w-full bg-white outline-none focus:outine-none shadow-lg">

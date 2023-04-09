@@ -1,4 +1,4 @@
-import Form from "./components/forms/Form";
+import RegisterForm from "./components/forms/RegisterForm";
 
 /**
  * @description Login page
@@ -6,7 +6,7 @@ import Form from "./components/forms/Form";
 export default function Home() {
   return (
     <main className="flex justify-center items-center h-screen w-full bg-neutral-100">
-      <Form />
+      <RegisterForm />
     </main>
   );
 }
