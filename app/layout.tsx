@@ -12,7 +12,7 @@ export const metadata = {
 /**
  * @description The Layout for the entire site.
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;

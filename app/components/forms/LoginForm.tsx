@@ -1,8 +1,9 @@
 "use client";
 
 import axios from "axios";
-import { useState } from "react";
+import { useState, useCallback } from "react";
 import { useRouter } from "next/navigation";
+
 import { signIn } from "next-auth/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
@@ -15,9 +16,9 @@ import Input from "../inputs/Input";
 import Button from "../Button";
 
 /**
- * @description Register form component.
+ * @description Login Form component
  */
-const RegisterForm = () => {
+const LoginForm = () => {
   const [isLoading, setIsLoading] = useState(false);
 
   const router = useRouter();
@@ -29,7 +30,6 @@ const RegisterForm = () => {
     formState: { errors },
   } = useForm<FieldValues>({
     defaultValues: {
-      name: "",
       email: "",
       password: "",
     },
@@ -39,21 +39,27 @@ const RegisterForm = () => {
   const onSubmit: SubmitHandler<FieldValues> = (data) => {
     setIsLoading(true);
 
-    axios
-      .post("/api/register", data)
-      .catch((err) => {
-        toast.error("Une erreur est survenue");
-      })
-      .finally(() => {
-        setIsLoading(false);
+    signIn("credentials", {
+      ...data,
+      redirect: false,
+    }).then((callback) => {
+      setIsLoading(false);
+
+      if (callback?.error) {
+        toast.error(`Une erreur est survenue. ${callback.error}}`);
+      }
+
+      if (callback?.ok) {
+        toast.success("Vous êtes connecté");
         router.push("/dashboard");
-      });
+      }
+    });
   };
 
   // Form body content
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Bienvenue sur BOC" subtitle="Créez un compte" />
+      <Heading title="Bienvenue sur BOC" subtitle="Connexion à votre compte" />
 
       <Input
         id="email"
@@ -65,18 +71,9 @@ const RegisterForm = () => {
       />
 
       <Input
-        id="name"
-        label="Nom"
-        disabled={isLoading}
-        register={register}
-        errors={errors}
-        required
-      />
-
-      <Input
         id="password"
         type="password"
-        label="Mot de passe"
+        label="Password"
         disabled={isLoading}
         register={register}
         errors={errors}
@@ -103,13 +100,13 @@ const RegisterForm = () => {
 
       <div className="text-neutral-500 text-center mt-4 font-light">
         <div className="flex flex-row justify-center items-center gap-2">
-          <div className="">Vous avez déjà un compte ?</div>
+          <div className="">Vous n&apos;avez pas de compte ?</div>
 
           <div
             onClick={() => {}}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
-            Connexion
+            Inscription
           </div>
         </div>
       </div>
@@ -117,17 +114,15 @@ const RegisterForm = () => {
   );
 
   return (
-    <>
-      <Form
-        disabled={isLoading}
-        title="Inscription"
-        actionLabel="Continuer"
-        onSubmit={handleSubmit(onSubmit)}
-        body={bodyContent}
-        footer={footerContent}
-      />
-    </>
+    <Form
+      disabled={isLoading}
+      title="Connexion"
+      actionLabel="Continuer"
+      onSubmit={handleSubmit(onSubmit)}
+      body={bodyContent}
+      footer={footerContent}
+    />
   );
 };
 
-export default RegisterForm;
+export default LoginForm;
