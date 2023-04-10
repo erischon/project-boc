@@ -1,3 +1,8 @@
+import { redirect } from "next/navigation";
+
+import Navbar from "../components/navbar/Navbar";
+import getCurrentUser from "../actions/getCurrentUser";
+
 import "../globals.css";
 
 /**
@@ -10,15 +15,22 @@ export const metadata = {
 /**
  * @description The Layout for Dashboard pages
  */
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: {
   children: React.ReactNode;
 }) {
+  const currentUser = await getCurrentUser();
+
+  // If the user is not logged in, redirect them to the login page.
+  if (!currentUser) {
+    redirect("/");
+  }
+
   return (
     <html lang="en">
       <body>
-        <nav>Navbar</nav>
+        <Navbar />
         <div>Vertical bar</div>
         {children}
         <footer>Footer</footer>
