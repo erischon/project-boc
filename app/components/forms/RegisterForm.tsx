@@ -106,7 +106,7 @@ const RegisterForm = () => {
           <div className="">Vous avez déjà un compte ?</div>
 
           <div
-            onClick={() => {}}
+            onClick={() => router.push("/login")}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
             Connexion

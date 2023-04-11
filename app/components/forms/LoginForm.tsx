@@ -103,7 +103,7 @@ const LoginForm = () => {
           <div className="">Vous n&apos;avez pas de compte ?</div>
 
           <div
-            onClick={() => {}}
+            onClick={() => router.push("/register")}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
             Inscription
