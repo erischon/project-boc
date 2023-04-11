@@ -48,7 +48,7 @@ const Form: React.FC<FormProps> = ({
     <>
       {/* == Form Content == */}
 
-      <form className="relative flex flex-col w-full outline-none focus:outine-none">
+      <section className="relative flex flex-col w-full outline-none focus:outine-none">
         {/* == Header == */}
         <div className="flex justify-center items-center p-6">
           <div className="">{title}</div>
@@ -78,7 +78,7 @@ const Form: React.FC<FormProps> = ({
 
           {footer}
         </div>
-      </form>
+      </section>
     </>
   );
 };
