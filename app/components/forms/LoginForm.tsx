@@ -8,7 +8,7 @@ import { signIn } from "next-auth/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
-import { FcGoogle } from "react-icons/fc";
+import { BsGoogle } from "react-icons/bs";
 
 import Form from "./Form";
 import Heading from "../Heading";
@@ -102,14 +102,16 @@ const LoginForm = () => {
     <div className="flex flex-col gap-4 mt-3">
       <div className="relative flex py-4 items-center">
         <div className="flex-grow border-t border-neutral-400"></div>
-        <span className="flex-shrink mx-6 text-neutral-400">ou</span>
+        <span className="flex-shrink mx-6 text-neutral-400">
+          ou continuer avec
+        </span>
         <div className="flex-grow border-t border-neutral-400"></div>
       </div>
 
       <Button
         outline
-        label="Continuer avec Google"
-        icon={FcGoogle}
+        label="Google"
+        icon={BsGoogle}
         onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
       />
 

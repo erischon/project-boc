@@ -64,7 +64,7 @@ const RegisterForm = () => {
   // Form body content
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Bienvenue sur BOC" subtitle="Créez un compte" center />
+      <Heading title="Bienvenue sur BOC" subtitle="Créer un compte" center />
 
       <Input
         id="email"
@@ -101,13 +101,15 @@ const RegisterForm = () => {
     <div className="flex flex-col gap-4 mt-3">
       <div className="relative flex py-4 items-center">
         <div className="flex-grow border-t border-neutral-400"></div>
-        <span className="flex-shrink mx-6 text-neutral-400">ou</span>
+        <span className="flex-shrink mx-6 text-neutral-400">
+          ou continuer avec
+        </span>
         <div className="flex-grow border-t border-neutral-400"></div>
       </div>
 
       <Button
         outline
-        label="Continuer avec Google"
+        label="Google"
         icon={BsGoogle}
         onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
       />
