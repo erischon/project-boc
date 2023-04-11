@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
-import { FcGoogle } from "react-icons/fc";
+import { BsGoogle } from "react-icons/bs";
 
 import Form from "./Form";
 import Heading from "../Heading";
@@ -50,10 +50,21 @@ const RegisterForm = () => {
       });
   };
 
+  // Form title content
+  const titleContent = (
+    <div className="flex flex-col justify-center items-center gap-2">
+      <img
+        src="/images/logo.png"
+        alt="Logo BOC"
+        className="w-[30px] h-[30px]"
+      />
+    </div>
+  );
+
   // Form body content
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Bienvenue sur BOC" subtitle="Créez un compte" />
+      <Heading title="Bienvenue sur BOC" subtitle="Créez un compte" center />
 
       <Input
         id="email"
@@ -97,7 +108,7 @@ const RegisterForm = () => {
       <Button
         outline
         label="Continuer avec Google"
-        icon={FcGoogle}
+        icon={BsGoogle}
         onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
       />
 
@@ -120,7 +131,7 @@ const RegisterForm = () => {
     <>
       <Form
         disabled={isLoading}
-        title="Inscription"
+        title={titleContent}
         actionLabel="Continuer"
         onSubmit={handleSubmit(onSubmit)}
         body={bodyContent}

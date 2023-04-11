@@ -56,10 +56,25 @@ const LoginForm = () => {
     });
   };
 
+  // Form title content
+  const titleContent = (
+    <div className="flex flex-col justify-center items-center gap-2">
+      <img
+        src="/images/logo.png"
+        alt="Logo BOC"
+        className="w-[30px] h-[30px]"
+      />
+    </div>
+  );
+
   // Form body content
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Bienvenue sur BOC" subtitle="Connexion à votre compte" />
+      <Heading
+        title="Bienvenue sur BOC"
+        subtitle="Connexion à votre compte"
+        center
+      />
 
       <Input
         id="email"
@@ -116,7 +131,7 @@ const LoginForm = () => {
   return (
     <Form
       disabled={isLoading}
-      title="Connexion"
+      title={titleContent}
       actionLabel="Continuer"
       onSubmit={handleSubmit(onSubmit)}
       body={bodyContent}
