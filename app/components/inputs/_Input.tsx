@@ -25,17 +25,23 @@ const Input: React.FC<InputProps> = ({
   errors,
 }) => {
   return (
-    <div className=" relative w-full my-3 border-b-2 focus-within:border-cyan-700">
+    <div className="w-full relative">
       <input
         id={id}
         disabled={disabled}
         {...register(id, { required })}
         placeholder=" "
         type={type}
-        className={`block w-full appearance-none focus:outline-none bg-transparent`}
+        className={`peer w-full p-2 pt-4 font-light bg-white border-2 rounded-md outline-none transition disabled:opacity-70 disabled:cursor-not-allowed pl-4 ${
+          errors[id] ? "border-rose-500 " : "border-neutral-300"
+        } ${errors[id] ? "focus:border-rose-500 " : "focus:border-black"}`}
       />
 
-      <label className={`absolute top-0 -z-1 origin-0 text-neutral-400`}>
+      <label
+        className={`absolute text-md duration-150 transform -translate-y-3 top-4 z-10 origin-[0] peer-placeholder-shown:scale-100 peer-placeholder-shown:translate-y-0 peer-focus:scale-75 peer-focus:-translate-y-4 left-4 ${
+          errors[id] ? "text-rose-500" : "text-zinc-400"
+        }`}
+      >
         {label}
       </label>
     </div>

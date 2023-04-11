@@ -5,7 +5,7 @@ import { useCallback } from "react";
 import Button from "../Button";
 
 interface FormProps {
-  title?: string;
+  title?: React.ReactElement;
   body?: React.ReactElement;
   footer?: React.ReactElement;
   actionLabel: string;
@@ -46,44 +46,39 @@ const Form: React.FC<FormProps> = ({
 
   return (
     <>
-      <div className="flex flex-col justify-center items-center outline-none focus:outline-none w-full">
-        <form className="relative w-full md:w-4/6 lg:w-3/6 xl:w-2/5 my-6 mx-4 h-full md:h-auto lg:h-auto">
-          {/* == Form Content == */}
-          <div className="">
-            <div className="relative flex flex-col h-full md:h-auto lg:h-auto border-0 rounded-lg w-full bg-white outline-none focus:outine-none shadow-lg">
-              {/* == Header == */}
-              <div className="relative flex justify-center items-center p-6 border-b-[1px] rounded-t">
-                <div className="text-lg font-semibold">{title}</div>
-              </div>
+      {/* == Form Content == */}
 
-              {/* == Body == */}
-              <div className="relative p-6 flex-auto">{body}</div>
+      <section className="relative flex flex-col w-full outline-none focus:outine-none">
+        {/* == Header == */}
+        <div className="flex justify-center items-center p-6">
+          <div className="">{title}</div>
+        </div>
 
-              {/* == Footer == */}
-              <div className="flex flex-col gap-2 px-6 pb-6">
-                <div className="flex flex-row items-center gap-4 w-full">
-                  {secondaryAction && secondaryActionLabel ? (
-                    <Button
-                      outline
-                      disabled={disabled}
-                      label={secondaryActionLabel}
-                      onClick={handleSecondaryAction}
-                    />
-                  ) : null}
+        {/* == Body == */}
+        <div className="relative px-6 flex-auto">{body}</div>
 
-                  <Button
-                    disabled={disabled}
-                    label={actionLabel}
-                    onClick={handleSubmit}
-                  />
-                </div>
+        {/* == Footer == */}
+        <div className="flex flex-col gap-2 px-6 py-6">
+          <div className="flex flex-row items-center gap-4 w-full">
+            {secondaryAction && secondaryActionLabel ? (
+              <Button
+                outline
+                disabled={disabled}
+                label={secondaryActionLabel}
+                onClick={handleSecondaryAction}
+              />
+            ) : null}
 
-                {footer}
-              </div>
-            </div>
+            <Button
+              disabled={disabled}
+              label={actionLabel}
+              onClick={handleSubmit}
+            />
           </div>
-        </form>
-      </div>
+
+          {footer}
+        </div>
+      </section>
     </>
   );
 };

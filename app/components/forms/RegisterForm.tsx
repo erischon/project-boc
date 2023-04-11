@@ -7,7 +7,7 @@ import { signIn } from "next-auth/react";
 import { FieldValues, SubmitHandler, useForm } from "react-hook-form";
 import { toast } from "react-hot-toast";
 
-import { FcGoogle } from "react-icons/fc";
+import { BsGoogle } from "react-icons/bs";
 
 import Form from "./Form";
 import Heading from "../Heading";
@@ -50,10 +50,21 @@ const RegisterForm = () => {
       });
   };
 
+  // Form title content
+  const titleContent = (
+    <div className="flex flex-col justify-center items-center gap-2">
+      <img
+        src="/images/logo.png"
+        alt="Logo BOC"
+        className="w-[30px] h-[30px]"
+      />
+    </div>
+  );
+
   // Form body content
   const bodyContent = (
     <div className="flex flex-col gap-4">
-      <Heading title="Bienvenue sur BOC" subtitle="Créez un compte" />
+      <Heading title="Bienvenue sur BOC" subtitle="Créer un compte" center />
 
       <Input
         id="email"
@@ -90,14 +101,16 @@ const RegisterForm = () => {
     <div className="flex flex-col gap-4 mt-3">
       <div className="relative flex py-4 items-center">
         <div className="flex-grow border-t border-neutral-400"></div>
-        <span className="flex-shrink mx-6 text-neutral-400">ou</span>
+        <span className="flex-shrink mx-6 text-neutral-400">
+          ou continuer avec
+        </span>
         <div className="flex-grow border-t border-neutral-400"></div>
       </div>
 
       <Button
         outline
-        label="Continuer avec Google"
-        icon={FcGoogle}
+        label="Google"
+        icon={BsGoogle}
         onClick={() => signIn("google", { callbackUrl: "/dashboard" })}
       />
 
@@ -106,7 +119,7 @@ const RegisterForm = () => {
           <div className="">Vous avez déjà un compte ?</div>
 
           <div
-            onClick={() => {}}
+            onClick={() => router.push("/login")}
             className="text-neutral-800 cursor-pointer hover:underline"
           >
             Connexion
@@ -120,7 +133,7 @@ const RegisterForm = () => {
     <>
       <Form
         disabled={isLoading}
-        title="Inscription"
+        title={titleContent}
         actionLabel="Continuer"
         onSubmit={handleSubmit(onSubmit)}
         body={bodyContent}
