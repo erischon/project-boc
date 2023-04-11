@@ -28,13 +28,11 @@ export default async function RootLayout({
   }
 
   return (
-    <html lang="en">
-      <body>
-        <Navbar />
-        <div>Vertical bar</div>
-        {children}
-        <footer>Footer</footer>
-      </body>
-    </html>
+    <>
+      <Navbar />
+      <div>Vertical bar</div>
+      {children}
+      <footer>Footer</footer>
+    </>
   );
 }
