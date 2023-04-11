@@ -1,3 +1,4 @@
+import ClientOnly from "./components/ClientOnly";
 import "./globals.css";
 
 /**
@@ -19,7 +20,9 @@ export default async function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        <ClientOnly>{children}</ClientOnly>
+      </body>
     </html>
   );
 }
