@@ -4,6 +4,7 @@ import Navbar from "../components/navbar/Navbar";
 import getCurrentUser from "../actions/getCurrentUser";
 
 import "../globals.css";
+import Verticalbar from "../components/navbar/Verticalbar";
 
 /**
  * Metadata for Dashboard pages
@@ -28,11 +29,11 @@ export default async function RootLayout({
   }
 
   return (
-    <>
+    <div className="max-w-screen-lg mx-auto">
       <Navbar />
-      <div>Vertical bar</div>
+      <Verticalbar />
       {children}
       <footer>Footer</footer>
-    </>
+    </div>
   );
 }
