@@ -1,10 +1,12 @@
 "use client";
 
 import { useState } from "react";
+import { usePathname } from "next/navigation";
 import { signOut } from "next-auth/react";
 
 import { FiMenu } from "react-icons/fi";
 import { SlUser, SlLogout } from "react-icons/sl";
+import Link from "next/link";
 
 /**
  * @description The Navbar component
@@ -12,7 +14,9 @@ import { SlUser, SlLogout } from "react-icons/sl";
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
-  console.log(isOpen);
+  const pathname = usePathname();
+
+  console.log(pathname);
 
   return (
     <nav className="flex justify-between items-center border-b-2 border-cyan-700 h-16">
@@ -25,11 +29,43 @@ const Navbar = () => {
       </div>
 
       <div className="hidden sm:flex">
-        <ul className="flex gap-4">
-          <li className="cursor-pointer hover:opacity-50">Dashboard</li>
-          <li className="cursor-pointer hover:opacity-50">Temps</li>
-          <li className="cursor-pointer hover:opacity-50">Clients</li>
-          <li className="cursor-pointer hover:opacity-50">Trésorerie</li>
+        <ul className="flex gap-4 uppercase text-sm ">
+          <li
+            className={`cursor-pointer hover:text-cyan-700  hover:border-cyan-700 hover:border-b-2 ${
+              pathname === "/dashboard"
+                ? "border-cyan-700 border-b-2"
+                : "border-b-2 border-white"
+            }`}
+          >
+            <Link href="/dashboard">Dashboard</Link>
+          </li>
+          <li
+            className={`cursor-pointer hover:text-cyan-700  hover:border-cyan-700 hover:border-b-2 ${
+              pathname === "/temps"
+                ? "border-cyan-700 border-b-2"
+                : "border-b-2 border-white"
+            }`}
+          >
+            Temps
+          </li>
+          <li
+            className={`cursor-pointer hover:text-cyan-700  hover:border-cyan-700 hover:border-b-2 ${
+              pathname === "/clients"
+                ? "border-cyan-700 border-b-2"
+                : "border-b-2 border-white"
+            }`}
+          >
+            Clients
+          </li>
+          <li
+            className={`cursor-pointer hover:text-cyan-700  hover:border-cyan-700 hover:border-b-2 ${
+              pathname === "/finances"
+                ? "border-cyan-700 border-b-2"
+                : "border-b-2 border-white"
+            }`}
+          >
+            Trésorerie
+          </li>
         </ul>
       </div>
 
@@ -56,11 +92,7 @@ const Navbar = () => {
           </div>
         </div>
 
-        {isOpen ? (
-          <div onClick={() => signOut()} className="cursor-pointer">
-            Déconnexion
-          </div>
-        ) : null}
+        {isOpen ? <div className="hidden"></div> : null}
       </div>
     </nav>
   );
