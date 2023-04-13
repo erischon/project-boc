@@ -34,7 +34,7 @@ export default async function RootLayout({
       <Navbar />
 
       <div className="flex w-full h-full">
-        <Verticalbar />
+        {/* <Verticalbar /> */}
 
         <div>{children}</div>
       </div>

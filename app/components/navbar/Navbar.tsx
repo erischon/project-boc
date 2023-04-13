@@ -16,7 +16,7 @@ const Navbar = () => {
 
   return (
     <nav className="flex justify-between items-center border-b-2 border-cyan-600 h-16">
-      <div className="ml-4">
+      <div className="ml-4 w-[120px]">
         <img
           src="/images/logo.png"
           alt="Logo BOC"
