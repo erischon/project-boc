@@ -5,6 +5,7 @@ import getCurrentUser from "../actions/getCurrentUser";
 
 import "../globals.css";
 import Verticalbar from "../components/navbar/Verticalbar";
+import Footer from "../components/Footer";
 
 /**
  * Metadata for Dashboard pages
@@ -29,11 +30,16 @@ export default async function RootLayout({
   }
 
   return (
-    <div className="max-w-screen-lg mx-auto">
+    <div className="flex flex-col max-w-screen-lg mx-auto min-h-screen px-2">
       <Navbar />
-      <Verticalbar />
-      {children}
-      <footer>Footer</footer>
+
+      <div className="flex w-full h-full">
+        <Verticalbar />
+
+        <div>{children}</div>
+      </div>
+
+      <Footer />
     </div>
   );
 }
