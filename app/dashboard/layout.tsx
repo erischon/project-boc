@@ -1,11 +1,11 @@
 import { redirect } from "next/navigation";
 
-import Navbar from "../components/navbar/Navbar";
-import getCurrentUser from "../actions/getCurrentUser";
+import Navbar from "@/components/navbar/Navbar";
+import getCurrentUser from "@/actions/getCurrentUser";
 
 import "../globals.css";
-import Verticalbar from "../components/navbar/Verticalbar";
-import Footer from "../components/Footer";
+import Verticalbar from "@/components/navbar/Verticalbar";
+import Footer from "@/components/Footer";
 
 /**
  * Metadata for Dashboard pages
