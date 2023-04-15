@@ -1,5 +1,6 @@
-import ClientOnly from "@/components/ClientOnly";
 import "./globals.css";
+
+import { Providers } from "@/components/Providers";
 
 /**
  * Metadata for the entire site.
@@ -21,7 +22,9 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ClientOnly>{children}</ClientOnly>
+        {/* <Providers> */}
+        {children}
+        {/* </Providers> */}
       </body>
     </html>
   );
