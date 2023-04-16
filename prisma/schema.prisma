@@ -17,9 +17,13 @@ model User {
   hashedPassword String?
   createdAt      DateTime  @default(now())
   updatedAt      DateTime  @updatedAt
-  favoriteIds    String[]  @db.ObjectId
 
-  accounts Account[]
+  userType        UserType  @default(CLIENT)
+  tasks           Task[]
+  managedProjects Project[]
+  accounts        Account[]
+  Comment         Comment[]
+  Client          Client[]
 }
 
 // Account model
@@ -40,4 +44,82 @@ model Account {
   user User @relation(fields: [userId], references: [id], onDelete: Cascade)
 
   @@unique([provider, providerAccountId])
+}
+
+// Client model
+model Client {
+  id     String @id @default(auto()) @map("_id") @db.ObjectId
+  userId String @db.ObjectId
+  name   String
+  email  String @unique
+
+  projects Project[]
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+}
+
+// Project model
+model Project {
+  id          String @id @default(auto()) @map("_id") @db.ObjectId
+  managerId   String @db.ObjectId
+  clientId    String @db.ObjectId
+  name        String
+  description String
+
+  projectType ProjectType @default(INTERNAL)
+  tasks       Task[]
+
+  client  Client @relation(fields: [clientId], references: [id])
+  manager User?  @relation(fields: [managerId], references: [id])
+}
+
+// Task model
+model Task {
+  id           String  @id @default(auto()) @map("_id") @db.ObjectId
+  assignedToId String? @db.ObjectId
+  projectId    String  @db.ObjectId
+  name         String
+  description  String?
+
+  status   Status    @default(TODO)
+  priority Priority  @default(LOW)
+  comments Comment[]
+
+  project    Project @relation(fields: [projectId], references: [id])
+  assignedTo User?   @relation(fields: [assignedToId], references: [id])
+}
+
+// Comment model
+model Comment {
+  id       String @id @default(auto()) @map("_id") @db.ObjectId
+  taskId   String @db.ObjectId
+  authorId String @db.ObjectId
+  text     String
+
+  author User @relation(fields: [authorId], references: [id])
+  task   Task @relation(fields: [taskId], references: [id])
+}
+
+// Enums for the models
+enum UserType {
+  CLIENT
+  STAFF
+  ADMIN
+}
+
+enum ProjectType {
+  INTERNAL
+  EXTERNAL
+}
+
+enum Status {
+  TODO
+  IN_PROGRESS
+  DONE
+}
+
+enum Priority {
+  LOW
+  MEDIUM
+  HIGH
 }

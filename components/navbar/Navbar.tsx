@@ -7,6 +7,7 @@ import { signOut } from "next-auth/react";
 import { FiMenu } from "react-icons/fi";
 import { SlUser, SlLogout } from "react-icons/sl";
 import Link from "next/link";
+import UserInfo from "../users/UserInfo";
 
 /**
  * @description The Navbar component
@@ -15,8 +16,6 @@ const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const pathname = usePathname();
-
-  console.log(pathname);
 
   return (
     <nav className="flex justify-between items-center border-b-2 border-cyan-700 h-16">
@@ -79,8 +78,10 @@ const Navbar = () => {
 
         <div className="hidden sm:flex justify-between items-center gap-8 w-full">
           <div className="flex gap-4">
-            <div className="cursor-pointer hover:opacity-50">
-              <SlUser className="text-xl" />
+            <div className="relative cursor-pointer hover:opacity-50">
+              <Link href={"/dashboard/user"}>
+                <SlUser className="text-xl" />
+              </Link>
             </div>
 
             <div

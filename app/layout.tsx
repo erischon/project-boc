@@ -1,5 +1,6 @@
-import ClientOnly from "./components/ClientOnly";
 import "./globals.css";
+
+import ApolloProvider from "@/providers/ApolloProvider";
 
 /**
  * Metadata for the entire site.
@@ -21,7 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <ClientOnly>{children}</ClientOnly>
+        <ApolloProvider>{children}</ApolloProvider>
       </body>
     </html>
   );

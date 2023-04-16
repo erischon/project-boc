@@ -1,7 +1,7 @@
 import bcrypt from "bcrypt";
 import { NextResponse } from "next/server";
 
-import client from "@/app/libs/prismadb";
+import client from "@/libs/prismadb";
 
 /**
  * @description Endpoint to register a new user
