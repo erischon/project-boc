@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import { Providers } from "@/components/Providers";
+import Providers from "@/components/Providers";
 
 /**
  * Metadata for the entire site.
@@ -22,9 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        {/* <Providers> */}
-        {children}
-        {/* </Providers> */}
+        <Providers>{children}</Providers>
       </body>
     </html>
   );
