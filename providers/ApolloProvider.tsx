@@ -2,7 +2,7 @@
 
 import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-const Providers = ({ children }: { children: React.ReactNode }) => {
+const Provider = ({ children }: { children: React.ReactNode }) => {
   const client = new ApolloClient({
     uri: "https://flyby-router-demo.herokuapp.com/",
     cache: new InMemoryCache(),
@@ -11,4 +11,4 @@ const Providers = ({ children }: { children: React.ReactNode }) => {
   return <ApolloProvider client={client}>{children}</ApolloProvider>;
 };
 
-export default Providers;
+export default Provider;

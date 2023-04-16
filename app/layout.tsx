@@ -1,6 +1,6 @@
 import "./globals.css";
 
-import Providers from "@/components/Providers";
+import ApolloProvider from "@/providers/ApolloProvider";
 
 /**
  * Metadata for the entire site.
@@ -22,7 +22,7 @@ export default async function RootLayout({
   return (
     <html lang="en">
       <body>
-        <Providers>{children}</Providers>
+        <ApolloProvider>{children}</ApolloProvider>
       </body>
     </html>
   );
