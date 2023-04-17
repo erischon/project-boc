@@ -21,15 +21,24 @@ const UserInfo: React.FC<UserInfoProps> = ({ userId }) => {
     <section className="w-full p-4">
       <div className="flex flex-col gap-2">
         <h2 className="text-xl">Mes informations</h2>
-        <p>{data.user.name}</p>
-        <p>{data.user.email}</p>
-        <Image
-          src={data.user.image || "/images/placeholder.jpg"}
-          className="rounded-full"
-          height="80"
-          width="80"
-          alt="Avatar"
-        />
+        <p className="font-semibold">
+          <span className="font-thin">Nom :</span> {data.user.name}
+        </p>
+        <p className="font-semibold">
+          <span className="font-thin">Email :</span> {data.user.email}
+        </p>
+        <div>
+          <span className="font-thin">Avatar :</span>
+          <div className="flex justify-center shadow-md p-4">
+            <Image
+              src={data.user.image || "/images/placeholder.jpg"}
+              className="rounded-full"
+              height="80"
+              width="80"
+              alt="Avatar"
+            />
+          </div>
+        </div>
       </div>
     </section>
   );
