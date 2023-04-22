@@ -10,11 +10,12 @@ import Link from "next/link";
 import UserInfo from "../users/UserInfo";
 import LogoBoc from "../LogoBoc";
 import MobileMenu from "./MobileMenu";
+import MenuUser from "./MenuUser";
 
 /**
- * @description The Navbar component
+ * @description The Header Bar component
  */
-const HorizontalBar = () => {
+const HeaderBar = () => {
   const [isOpen, setIsOpen] = useState(false);
 
   const pathname = usePathname();
@@ -37,18 +38,7 @@ const HorizontalBar = () => {
 
         <div className="hidden md:flex justify-between items-center gap-8 w-full">
           <div className="flex gap-4">
-            <div className="relative cursor-pointer hover:opacity-50">
-              <Link href={"/user"}>
-                <SlUser className="text-xl" />
-              </Link>
-            </div>
-
-            <div
-              className="cursor-pointer hover:opacity-50"
-              onClick={() => signOut()}
-            >
-              <SlLogout className="text-xl rotate-180" />
-            </div>
+            <MenuUser />
           </div>
         </div>
 
@@ -58,4 +48,4 @@ const HorizontalBar = () => {
   );
 };
 
-export default HorizontalBar;
+export default HeaderBar;

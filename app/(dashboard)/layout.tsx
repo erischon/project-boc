@@ -5,7 +5,7 @@ import getCurrentUser from "@/actions/getCurrentUser";
 import "../globals.css";
 import Verticalbar from "@/components/navbar/Verticalbar";
 import Footer from "@/components/Footer";
-import HorizontalBar from "@/components/navbar/HorizontalBar";
+import HeaderBar from "@/components/navbar/HeaderBar";
 
 /**
  * Metadata for Dashboard pages
@@ -36,7 +36,7 @@ export default async function RootLayout({
       </aside>
 
       <div className="flex flex-col flex-grow">
-        <HorizontalBar />
+        <HeaderBar />
 
         {children}
 

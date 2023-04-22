@@ -1,6 +1,5 @@
 "use client";
 
-import { useState } from "react";
 import { usePathname } from "next/navigation";
 import Link from "next/link";
 
@@ -9,6 +8,9 @@ import { IoPersonOutline } from "react-icons/io5";
 import { RiMoneyEuroBoxLine } from "react-icons/ri";
 import { AiOutlineProject, AiOutlineFieldTime } from "react-icons/ai";
 
+/**
+ * @description The Menu component
+ */
 const Menu = () => {
   const pathname = usePathname();
 

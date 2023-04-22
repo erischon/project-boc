@@ -4,6 +4,9 @@ import { SlUser, SlLogout } from "react-icons/sl";
 import Link from "next/link";
 import { signOut } from "next-auth/react";
 
+/**
+ * @description The User Menu component
+ */
 const MenuUser = () => {
   return (
     <>

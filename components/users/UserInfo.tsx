@@ -9,6 +9,9 @@ interface UserInfoProps {
   userId: string;
 }
 
+/**
+ * @description The User Info component
+ */
 const UserInfo: React.FC<UserInfoProps> = ({ userId }) => {
   const { data, loading, error } = useQuery(GET_USER, {
     variables: { userId: userId },
@@ -18,26 +21,27 @@ const UserInfo: React.FC<UserInfoProps> = ({ userId }) => {
   if (error) return <div>Error</div>;
 
   return (
-    <section className="w-full p-4">
+    <section className="p-4 md:flex md:flex-row-reverse md:gap-12 items-start justify-end ">
       <div className="flex flex-col gap-2">
-        <h2 className="text-xl">Mes informations</h2>
         <p className="font-semibold">
           <span className="font-thin">Nom :</span> {data.user.name}
         </p>
         <p className="font-semibold">
           <span className="font-thin">Email :</span> {data.user.email}
         </p>
-        <div>
-          <span className="font-thin">Avatar :</span>
-          <div className="flex justify-center shadow-md p-4">
-            <Image
-              src={data.user.image || "/images/placeholder.jpg"}
-              className="rounded-full"
-              height="80"
-              width="80"
-              alt="Avatar"
-            />
-          </div>
+      </div>
+
+      <div className="my-2 md:my-0">
+        <span className="font-thin">Avatar :</span>
+
+        <div className="my-4">
+          <Image
+            src={data.user.image || "/images/placeholder-m.svg"}
+            className="rounded-full shadow-md"
+            height="80"
+            width="80"
+            alt="Avatar"
+          />
         </div>
       </div>
     </section>

@@ -12,8 +12,11 @@ const page = async () => {
   }
 
   return (
-    <main>
-      <UserInfo userId={currentUser!.id} />
+    <main className="h-full w-full">
+      <div className="ml-6">
+        <h1 className="text-2xl">Mes Informations</h1>
+        <UserInfo userId={currentUser!.id} />
+      </div>
     </main>
   );
 };

@@ -6,7 +6,7 @@ import { usePathname } from "next/navigation";
 import Menu from "./Menu";
 
 /**
- * @description The Navbar component
+ * @description The Vertical Bar component
  */
 const VerticalBar = () => {
   const [isOpen, setIsOpen] = useState(false);
