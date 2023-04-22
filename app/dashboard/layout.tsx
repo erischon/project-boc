@@ -1,11 +1,11 @@
 import { redirect } from "next/navigation";
 
-import Navbar from "@/components/navbar/Navbar";
 import getCurrentUser from "@/actions/getCurrentUser";
 
 import "../globals.css";
 import Verticalbar from "@/components/navbar/Verticalbar";
 import Footer from "@/components/Footer";
+import HorizontalBar from "@/components/navbar/HorizontalBar";
 
 /**
  * Metadata for Dashboard pages
@@ -30,16 +30,18 @@ export default async function RootLayout({
   }
 
   return (
-    <div className="flex flex-col max-w-screen-lg mx-auto min-h-screen px-2">
-      <Navbar />
+    <div className="flex max-w-screen-lg mx-auto min-h-screen">
+      <aside className="hidden md:flex flex-col justify-between h-auto pl-4 py-4 text-white bg-[var(--primary-color)]">
+        <Verticalbar />
+      </aside>
 
-      <div className="flex w-full h-full">
-        {/* <Verticalbar /> */}
+      <div className="flex flex-col flex-grow pt-4">
+        <HorizontalBar />
 
-        <div>{children}</div>
+        {children}
+
+        <Footer />
       </div>
-
-      <Footer />
     </div>
   );
 }
