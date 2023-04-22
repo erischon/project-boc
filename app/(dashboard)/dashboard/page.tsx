@@ -3,8 +3,10 @@
  */
 const Dashboard = async () => {
   return (
-    <main className="my-6 mx-6">
-      <h1 className="text-2xl">Dashboard</h1>
+    <main className="h-full w-full">
+      <div className="ml-6">
+        <h1 className="text-2xl">Dashboard</h1>
+      </div>
     </main>
   );
 };

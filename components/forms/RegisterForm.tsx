@@ -54,7 +54,7 @@ const RegisterForm = () => {
   const titleContent = (
     <div className="flex flex-col justify-center items-center gap-2">
       <img
-        src="/images/logo.png"
+        src="/images/logo-dark.png"
         alt="Logo BOC"
         className="w-[30px] h-[30px]"
       />

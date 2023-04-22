@@ -25,7 +25,7 @@ const Input: React.FC<InputProps> = ({
   errors,
 }) => {
   return (
-    <div className=" relative w-full my-3 border-b-2 focus-within:border-cyan-700">
+    <div className=" relative w-full my-3 border-b-2 focus-within:border-cyan-700 z-10">
       <input
         id={id}
         disabled={disabled}
