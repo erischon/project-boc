@@ -9,6 +9,7 @@ import { SlUser, SlLogout } from "react-icons/sl";
 import Link from "next/link";
 import UserInfo from "../users/UserInfo";
 import LogoBoc from "../LogoBoc";
+import MobileMenu from "./MobileMenu";
 
 /**
  * @description The Navbar component
@@ -24,12 +25,14 @@ const HorizontalBar = () => {
         <LogoBoc />
       </div>
 
-      <div className="flex gap-4 mr-4 py-[5px]">
+      <div className="flex gap-4 mr-4 py-[5px] relative">
         <div
           onClick={() => setIsOpen(!isOpen)}
           className="cursor-pointer relative md:hidden"
         >
           <FiMenu className="text-2xl" />
+
+          {isOpen ? <MobileMenu /> : null}
         </div>
 
         <div className="hidden md:flex justify-between items-center gap-8 w-full">
