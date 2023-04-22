@@ -8,6 +8,7 @@ import { FiMenu } from "react-icons/fi";
 import { SlUser, SlLogout } from "react-icons/sl";
 import Link from "next/link";
 import UserInfo from "../users/UserInfo";
+import LogoBoc from "../LogoBoc";
 
 /**
  * @description The Navbar component
@@ -18,19 +19,23 @@ const HorizontalBar = () => {
   const pathname = usePathname();
 
   return (
-    <section className="flex justify-end items-center pb-4 mb-6 border-b-2 border-[var(--primary-color)]">
+    <section className="flex justify-between md:justify-end items-center bg-slate-700 text-white md:bg-white md:text-black px-4 py-4 mb-6 border-b-2 border-[var(--primary-color)]">
+      <div className="md:hidden">
+        <LogoBoc />
+      </div>
+
       <div className="flex gap-4 mr-4 py-[5px]">
         <div
           onClick={() => setIsOpen(!isOpen)}
-          className="cursor-pointer relative sm:hidden"
+          className="cursor-pointer relative md:hidden"
         >
           <FiMenu className="text-2xl" />
         </div>
 
-        <div className="hidden sm:flex justify-between items-center gap-8 w-full">
+        <div className="hidden md:flex justify-between items-center gap-8 w-full">
           <div className="flex gap-4">
             <div className="relative cursor-pointer hover:opacity-50">
-              <Link href={"/dashboard/user"}>
+              <Link href={"/user"}>
                 <SlUser className="text-xl" />
               </Link>
             </div>

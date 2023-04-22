@@ -19,7 +19,7 @@ const VerticalBar = () => {
   const pathname = usePathname();
 
   const inactiveLink =
-    "cursor-pointer flex gap-2 items-center py-1 hover:opacity-50 ";
+    "cursor-pointer flex gap-2 items-center py-1 hover:opacity-80 px-2";
   const activeLink = `${inactiveLink} bg-white text-blue-900 rounded-l-md`;
 
   return (
@@ -43,7 +43,7 @@ const VerticalBar = () => {
         </Link>
 
         <Link
-          href="/dashboard/projets"
+          href="/projets"
           className={pathname === "/projets" ? activeLink : inactiveLink}
         >
           <AiOutlineProject />

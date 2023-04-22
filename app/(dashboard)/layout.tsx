@@ -35,7 +35,7 @@ export default async function RootLayout({
         <Verticalbar />
       </aside>
 
-      <div className="flex flex-col flex-grow pt-4">
+      <div className="flex flex-col flex-grow">
         <HorizontalBar />
 
         {children}
