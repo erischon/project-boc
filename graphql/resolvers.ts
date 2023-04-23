@@ -12,5 +12,12 @@ export const resolvers = {
         },
       });
     },
+    projects: (parent: any, args: any, context: Context) => {
+      return context.prisma.project.findMany({
+        where: {
+          managerId: args.managerId,
+        },
+      });
+    },
   },
 };

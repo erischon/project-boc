@@ -18,7 +18,7 @@ const Menu = () => {
     "cursor-pointer flex gap-2 items-center py-1 hover:opacity-80 px-2";
   const activeLink = `${inactiveLink} bg-white text-blue-900 rounded-l-md`;
   return (
-    <nav className="flex flex-col w-full mr-6">
+    <nav className="flex flex-col w-full mr-6 gap-2">
       <Link
         href="/dashboard"
         className={pathname === "/dashboard" ? activeLink : inactiveLink}
