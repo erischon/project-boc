@@ -51,23 +51,23 @@ model Client {
   email String  @unique
   phone String?
 
-  Project   Project @relation(fields: [projectId], references: [id])
-  projectId String  @db.ObjectId
+  projects Project[]
 }
 
 // Project model
 model Project {
-  id        String @id @default(auto()) @map("_id") @db.ObjectId
-  managerId String @db.ObjectId
-
+  id          String      @id @default(auto()) @map("_id") @db.ObjectId
   name        String
   description String
-
+  active      Boolean     @default(true)
   projectType ProjectType @default(INTERNAL)
+  createdAt   DateTime    @default(now())
+  updatedAt   DateTime    @updatedAt
 
-  client Client[]
-  lead   User     @relation(fields: [leadId], references: [id])
-  leadId String   @db.ObjectId
+  client   Client @relation(fields: [clientId], references: [id])
+  clientId String @db.ObjectId
+  lead     User   @relation(fields: [leadId], references: [id])
+  leadId   String @db.ObjectId
 }
 
 // Enums for the models

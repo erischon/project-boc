@@ -12,17 +12,27 @@ export const resolvers = {
         },
       });
     },
-    project: (parent: any, args: any, context: Context) => {
-      return context.prisma.project.findUnique({
+    getActiveUserProjects: (parent: any, args: any, context: Context) => {
+      return context.prisma.project.findMany({
         where: {
-          id: args.id,
+          leadId: args.id,
+          active: true,
         },
       });
     },
-    projects: (parent: any, args: any, context: Context) => {
-      return context.prisma.project.findMany({
+  },
+  Project: {
+    client: (parent: any, args: any, context: Context) => {
+      return context.prisma.client.findUnique({
         where: {
-          managerId: args.managerId,
+          id: parent.clientId,
+        },
+      });
+    },
+    lead: (parent: any, args: any, context: Context) => {
+      return context.prisma.user.findUnique({
+        where: {
+          id: parent.leadId,
         },
       });
     },

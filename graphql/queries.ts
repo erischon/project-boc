@@ -12,15 +12,24 @@ export const GET_USER = gql`
   }
 `;
 
-export const GET_PROJECTS = gql`
-  query Query($managerId: ID!) {
-    projects(managerId: $managerId) {
-      description
+export const GET_ACTIVE_PROJECTS = gql`
+  query Query($getActiveUserProjectsId: ID!) {
+    getActiveUserProjects(id: $getActiveUserProjectsId) {
       id
-      clientId
-      managerId
       name
+      description
       projectType
+      client {
+        id
+        name
+      }
+      lead {
+        id
+        name
+        email
+        image
+        userType
+      }
     }
   }
 `;

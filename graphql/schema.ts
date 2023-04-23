@@ -14,18 +14,23 @@ export const typeDefs = gql`
 
   type Project {
     id: ID!
-    manager: User
-    managerId: ID!
-    client: [Client]
-    clientId: ID!
     name: String!
     description: String!
     projectType: ProjectType!
+    active: Boolean!
+    createdAt: String!
+    updatedAt: String!
+    clientId: ID!
+    leadId: ID!
+    lead: User
+    client: Client
   }
 
   type Client {
     id: ID!
-    user: [User!]
+    name: String!
+    email: String!
+    phone: String
     projects: [Project]
   }
 
@@ -42,7 +47,6 @@ export const typeDefs = gql`
 
   type Query {
     user(id: ID!): User
-    projects(managerId: ID!): Project
-    project(id: ID!): Project
+    getActiveUserProjects(id: ID!): [Project]
   }
 `;
