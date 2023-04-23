@@ -14,9 +14,9 @@ export const typeDefs = gql`
 
   type Project {
     id: ID!
-    manager: User!
+    manager: User
     managerId: ID!
-    client: Client!
+    client: [Client]
     clientId: ID!
     name: String!
     description: String!
@@ -25,7 +25,7 @@ export const typeDefs = gql`
 
   type Client {
     id: ID!
-    user: User!
+    user: [User!]
     projects: [Project]
   }
 
@@ -42,6 +42,7 @@ export const typeDefs = gql`
 
   type Query {
     user(id: ID!): User
-    projects(managerId: ID!): [Project]
+    projects(managerId: ID!): Project
+    project(id: ID!): Project
   }
 `;

@@ -11,3 +11,16 @@ export const GET_USER = gql`
     }
   }
 `;
+
+export const GET_PROJECTS = gql`
+  query Query($managerId: ID!) {
+    projects(managerId: $managerId) {
+      description
+      id
+      clientId
+      managerId
+      name
+      projectType
+    }
+  }
+`;

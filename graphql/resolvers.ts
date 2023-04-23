@@ -12,6 +12,13 @@ export const resolvers = {
         },
       });
     },
+    project: (parent: any, args: any, context: Context) => {
+      return context.prisma.project.findUnique({
+        where: {
+          id: args.id,
+        },
+      });
+    },
     projects: (parent: any, args: any, context: Context) => {
       return context.prisma.project.findMany({
         where: {
